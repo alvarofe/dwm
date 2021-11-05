@@ -34,7 +34,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 2,       0,           -1 },
 };
 
 /* layout(s) */
@@ -93,10 +93,11 @@ static Key keys[] = {
         { MODKEY,                       XK_g,      setgaps,        {.i = -1 } },
         { MODKEY|ShiftMask,             XK_g,      setgaps,        {.i = +1 } },
         /* Window nav (rofi) */
-        { MODKEY,                       XK_m,      spawn,          SHCMD("rofi -show") },
+        { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("rofi -show") },
         /* Redshift */
         { MODKEY,                       XK_r,      spawn,          SHCMD("redshift -O 2400") },
         { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("redshift -x") },
+        { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("emacs") },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
@@ -104,6 +105,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
         { MODKEY|ShiftMask,             XK_Tab,    cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
